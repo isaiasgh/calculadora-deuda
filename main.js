@@ -96,27 +96,24 @@ cuestionario.appendChild(input2);
 cuestionario.appendChild(input3);
 cuestionario.appendChild(input4);
 
+const respuestaIgual = document.createElement('p');
+respuestaIgual.classList.add('respuesta1');
+contenedorCuestionario.appendChild(respuestaIgual);
+
+const cadauno = document.createElement('p');
+cadauno.classList.add('respuesta1');
+contenedorCuestionario.appendChild(cadauno);
+
+const deudajoel = document.createElement('p');
+deudajoel.classList.add('respuesta1');
+contenedorCuestionario.appendChild(deudajoel);
+
+const deudamartin = document.createElement('p');
+deudamartin.classList.add('respuesta1');
+contenedorCuestionario.appendChild(deudamartin);
 
 function calcularSi(){
     botonCalcular.addEventListener('click', operacion);
-
-    const respuestaIgual = document.createElement('p');
-    respuestaIgual.classList.add('respuesta1');
-    contenedorCuestionario.appendChild(respuestaIgual);
-
-    const cadauno = document.createElement('p');
-    cadauno.classList.add('respuesta1');
-    contenedorCuestionario.appendChild(cadauno);
-
-    const deudajoel = document.createElement('p');
-    deudajoel.classList.add('respuesta1');
-    contenedorCuestionario.appendChild(deudajoel);
-
-    const deudamartin = document.createElement('p');
-    deudamartin.classList.add('respuesta1');
-    contenedorCuestionario.appendChild(deudamartin);
-
-
 
     function operacion(){
         const pagoMartin = input1.value;

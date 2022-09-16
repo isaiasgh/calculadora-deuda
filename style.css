@@ -26,6 +26,21 @@ body{
     margin: 0 auto;
 }
 
+.contenedor-botones {
+    display: flex;
+}
+
+.contenedor-img{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.contenedor-img img {
+    margin: 0 auto;
+    width: 30%;
+}
+
 .boton, .pPregunta {
     background-color: #4F5D75;
     border: 3px solid #2d3142;
@@ -36,6 +51,11 @@ body{
 .pPregunta {
     padding: 15px;
     border-radius: 15px;
+    text-align: center;
+}
+
+.imagen1 {
+    width: 15%;
 }
 
 .boton{
@@ -49,13 +69,11 @@ body{
 .contenedor-cuestionario {
     display: flex;
     flex-direction: column;
-}
-
-.cuestionario {
-    margin: 5px auto;
+    align-items: center;
 }
 
 .cuestionario{
+    margin: 5px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,6 +88,10 @@ body{
     color: white;
 }
 
+.cuestionario input::placeholder {
+    color: rgba(255, 255, 255, 0.633);
+}
+
 input {
     text-align: center;
 }
@@ -77,4 +99,29 @@ input {
 .contenedor-cuestionario p {
     color: rgb(17, 64, 111);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.boton-calcular, .boton-regresar {
+    cursor: pointer;
+}
+
+@media (max-width: 500px) {
+    .contenedor-img{
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .contenedor-img img {
+        margin: 0 auto;
+        width: 30%;
+    }
+}
+
+@media (min-width: 501px) {
+    .contenedor-img{
+        width: 500px;
+    }
+    .contenedor-img img {
+        width: 30%;
+    }
 }

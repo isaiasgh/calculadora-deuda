@@ -26,17 +26,37 @@ botonNo.classList.add('boton');
 
 contenedorBotones.appendChild(botonNo);
 
+const Imagen1 = document.createElement('img');
+Imagen1.classList.add('imagen1');
+Imagen1.setAttribute('src', './img/img1.png')
+
+const contenedorImg = document.createElement('div');
+contenedorImg.classList.add('contenedor-img');
+body.appendChild(contenedorImg);
+contenedorImg.appendChild(Imagen1);
+
 botonSi.addEventListener('click', toggleDivMain);
 botonSi.addEventListener('click', calcularSi)
 botonNo.addEventListener('click', toggleDivMain);
 
 function toggleDivMain() {
     estado = contenedorCuestionario.style.display;
+    estado2 = contenedorBotones.style.display;
 
     if(estado == 'none'){
         contenedorCuestionario.style.display = 'flex';
+        contenedorPregunta.style.display = 'flex';
     } else{
         contenedorCuestionario.style.display = 'none';
+        contenedorPregunta.style.display = 'none';
+    }
+
+    if(estado2 == 'none'){
+        contenedorBotones.style.display = 'flex';
+        contenedorPregunta.style.display = 'flex';
+    } else {
+        contenedorBotones.style.display = 'none';
+        contenedorPregunta.style.display = 'none';
     }
 
     contenedorPregunta.classList.add('inactive');
@@ -55,18 +75,26 @@ input1.placeholder = 'Aportación de Martín';
 const input2 = document.createElement('input');
 input2.placeholder = 'Aportación de Joel';
 const input3 = document.createElement('input');
-input3.placeholder = 'Total de la compra';
+input3.placeholder = 'Palanca Financiera';
+const input4 = document.createElement('input');
+input4.placeholder = 'Valor de la compra';
 
 const botonCalcular = document.createElement('button');
 botonCalcular.innerText = 'Calcular'
 botonCalcular.classList.add('boton-calcular');
 
+const botonRegresar = document.createElement('button');
+botonRegresar.innerText = 'Regresar'
+botonRegresar.classList.add('boton-regresar');
+
 body.appendChild(contenedorCuestionario);
 contenedorCuestionario.appendChild(cuestionario);
 contenedorCuestionario.appendChild(botonCalcular);
+contenedorCuestionario.appendChild(botonRegresar);
 cuestionario.appendChild(input1);
 cuestionario.appendChild(input2);
 cuestionario.appendChild(input3);
+cuestionario.appendChild(input4);
 
 
 function calcularSi(){
@@ -91,19 +119,33 @@ function calcularSi(){
 
 
     function operacion(){
-        cadauno.innerText = 'Cada uno debe pagar : ' + input3.value/2;
-        deudajoel.innerText = 'Joel le debe a Martín : ' + ((input3.value/2)-(input1.value));
-        deudamartin.innerText = 'Martín le debe a Joel: ' + ((input3.value/2)-(input2.value));
+        const pagoMartin = input1.value;
+        const pagoJoel = input2.value;
+        const Palanca = input3.value;
+        const TotalCompra = input4.value;
+        const deudaDemartin = (((TotalCompra-Palanca)/2) - pagoMartin);
+        const deudaDejoel = (((TotalCompra-Palanca)/2) - pagoJoel);
+        cadauno.innerText = 'Cada uno debe pagar : $' + (TotalCompra-Palanca)/2;
+        deudajoel.innerText = 'Joel le debe a Martín : $' + deudaDejoel;
+        deudamartin.innerText = 'Martín le debe a Joel: $' + deudaDemartin;
+        if (deudaDejoel < 0){
+            deudajoel.innerText = 'Joel le debe a Martín: $' + 0;
+        } else if (deudaDemartin < 0){
+            deudamartin.innerText = 'Martín le debe a Joel: $' + 0;
+        }
     }
-    
-
-    // respuestaIgual.innerText = // respuesta
 }
+    
+botonRegresar.addEventListener('click', regresar);
 
+function regresar(){
+    estado = contenedorCuestionario.style.display;
+    estado2 = contenedorBotones.style.display;
+    estado3 = contenedorCuestionario.style.display;
+    estado4 = contenedorPregunta.style.display
 
-function toggleMobileMenu(){
-    const isPreguntaClosed = contenedorPregunta.classList.contains('inactive');
-    if (isPreguntaClosed){
-        // mostrar el contenido de la calculadora
-    }
+    contenedorPregunta.style.display = 'flex';
+    contenedorCuestionario.style.display = 'flex';
+    contenedorBotones.style.display = 'flex';
+    contenedorCuestionario.style.display = 'none';
 }
